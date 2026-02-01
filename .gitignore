@@ -1,0 +1,79 @@
+############################
+# Environment / Secrets
+############################
+.env
+.env.*
+.env/
+*.env
+
+############################
+# Python
+############################
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Flask
+instance/
+.webassets-cache
+.flaskenv
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+coverage/
+htmlcov/
+
+# Migrations (optional – uncomment if you don't want them tracked)
+# migrations/
+
+############################
+# Node / React
+############################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+build/
+dist/
+
+# Vite / CRA / Next
+.vite/
+.next/
+out/
+
+############################
+# OS / Editor junk
+############################
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+
+# JetBrains
+.idea/
+
+############################
+# Logs
+############################
+*.log
+
+############################
+# Misc
+############################
+*.swp
+*.swo
+.cache/
