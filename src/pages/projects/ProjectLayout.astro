@@ -1,0 +1,29 @@
+---
+import RootLayout from "@/layout/RootLayout.astro"
+import Navlink from "@/components/Navlink.astro"
+
+let {title, currentProject} = Astro.props;
+---
+
+<RootLayout title={title}>
+    <div class="project-page">
+        <div>
+            <slot />
+        </div>
+        <aside class="projects-subheader">
+            <div>
+                <p>Apps</p>
+                <Navlink href="/projects/blutape" currentPath={currentProject}>bluTape</Navlink>
+                <Navlink href="/projects/cerberus" currentPath={currentProject}>Cerberus</Navlink>
+                <Navlink href="/projects/team-portal" currentPath={currentProject}>Team Portal</Navlink>
+                <Navlink href="/projects/epcteams" currentPath={currentProject}>EPC Teams</Navlink>
+            </div>
+            <div>
+                <p>Static Sites</p>
+                <Navlink href="/projects/mattsappliances" currentPath={currentProject}>Matt's Appliances</Navlink>
+                <Navlink href="/projects/ezrestoration" currentPath={currentProject}>EZ Restoration</Navlink>
+                <Navlink href="/projects/airelisellc" currentPath={currentProject}>Air Elise</Navlink>
+            </div>
+        </aside>
+    </div>
+</RootLayout>

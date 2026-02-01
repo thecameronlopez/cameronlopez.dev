@@ -1,0 +1,14 @@
+---
+const {href, exact = false} = Astro.props;
+const path = Astro.url.pathname;
+
+const isActive = exact
+    ? path === href
+    : href === "/"
+        ? path === "/"
+        : path.startsWith(href);
+---
+
+<a href={href} class={isActive ? "active" : ""}>
+    <slot />
+</a>

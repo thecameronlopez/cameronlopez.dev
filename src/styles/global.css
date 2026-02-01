@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --ink-black: #04151f;
+  --dark-slate-gray: #183a37;
+  --wheat: #efd6ac;
+  --burnt-orange: #c44900;
+  --midnight-violet: #432534;
+
+  --inter: "Inter", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.half-box-bl {
+  border-left: 1px solid var(--dark-slate-gray);
+  border-bottom: 1px solid var(--dark-slate-gray);
+  padding: 6px;
+  border-radius: 0 0 0 4px;
+  text-align: start;
+}
+
+.half-box-tr {
+  border-right: 1px solid var(--dark-slate-gray);
+  border-top: 1px solid var(--dark-slate-gray);
+  padding: 6px;
+  border-radius: 0 4px 0 0;
+  text-align: end;
+}
+
+body {
+  width: 100vw;
+  height: 100dvh;
+
+  font-family: var(--inter);
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  background-color: var(--ink-black);
+  color: var(--wheat);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 90%;
+  padding: 1rem 0 0.5rem 2rem;
+
+  color: var(--burnt-orange);
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-bottom: 1px solid var(--wheat);
+}
+
+header h1 small {
+  font-size: 18px;
+}
+
+.subheader {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  padding-inline-end: 1rem;
+  padding-top: 8px;
+  font-size: 1rem;
+}
+
+.subheader a:hover {
+  color: #da773e;
+}
+
+.subheader a.active {
+  color: var(--burnt-orange);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.project-page {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+}
+
+p.project-sum {
+  margin-top: 1rem;
+  width: 80%;
+  line-height: 2rem;
+}
+
+aside.projects-subheader {
+  width: fit-content;
+  align-self: flex-end;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  font-size: 1rem;
+  color: var(--dark-slate-gray);
+}
+aside.projects-subheader div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+aside.projects-subheader div:hover {
+  border-right: 1px solid var(--dark-slate-gray);
+  padding-right: 6px;
+}
+aside.projects-subheader div p:first-child {
+  color: var(--wheat);
+  margin-bottom: 6px;
+}
+aside.projects-subheader div a:hover {
+  color: #da773e;
+}
+aside.projects-subheader div a.active {
+  color: var(--burnt-orange);
+  font-weight: bold;
+}
+
+main {
+  flex: 1;
+
+  width: 90%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  width: 100%;
+  padding: 2rem 0;
+
+  background-color: var(--dark-slate-gray);
+  color: var(--ink-black);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

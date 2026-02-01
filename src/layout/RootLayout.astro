@@ -1,0 +1,42 @@
+---
+import "@/styles/global.css"
+let {title = "Cameron Lopez"} = Astro.props 
+import Navlink from "@/components/Navlink.astro"
+---
+
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="decription" content="Portfolio of Cameron Lopez - full-stack projects and internal tools." />
+    <meta name="author" content="Cameron Lopez" />
+
+    <!--Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-...YOUR_INTEGRITY_HASH..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+</head>
+<body>
+    <header>
+        <h1>Cameron Lopez<small>[.dev]</small></h1>
+    </header>
+    <div class="subheader">
+        <Navlink href="/" exact={true}>Home</Navlink>
+        <Navlink href="/about">About</Navlink>
+        <Navlink href="/contact">Contact Me</Navlink>
+        <Navlink href="/projects">Projects</Navlink>
+    </div>
+    <main>
+        <slot />
+    </main>
+    <footer>
+        <p>cameronlopez.dev</p>
+    </footer>
+</body>
+</html>
