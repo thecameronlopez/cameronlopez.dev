@@ -1,7 +1,13 @@
 ---
+import "@/styles/home.css"
 import RootLayout from "@/layout/RootLayout.astro"
+import HeroSlider from "@/components/HeroSlider"
 ---
 
 <RootLayout title="Cameron Lopez">
-	
+	<section id="hero">
+        <h2><span>Digital Tools.</span><span>Real Impact.</span></h2>
+        <HeroSlider client:load />
+        <p class="grabber">Helping churches, creators, and teams build custom tools that actually work.</p>
+    </section>
 </RootLayout>

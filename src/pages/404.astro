@@ -1,0 +1,15 @@
+---
+import "@/styles/404.css"
+import RootLayout from "@/layout/RootLayout.astro";
+---
+
+<RootLayout title="404 - Page Not Found">
+    <div class="not-found">
+        <h2>Oops! this page was not found</h2>
+        <p>{Astro.url.href}</p>
+        <p class="go-home">
+            <a href="/">Click Here</a>
+            to go back home
+        </p>
+    </div>
+</RootLayout>

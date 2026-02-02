@@ -1,0 +1,58 @@
+section#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: 4rem 2rem;
+  gap: 1rem;
+}
+
+section#hero h2 {
+  font-size: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section#hero h2 span:nth-child(2) {
+  color: var(--burnt-orange);
+}
+
+.hero-slider {
+  position: relative;
+
+  border: 1px solid var(--wheat);
+  padding: 1rem 3rem;
+  border-radius: 8px;
+  min-width: 20rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  box-shadow:
+    inset 1px -1px 8px var(--wheat),
+    inset -1px 1px 8px var(--wheat);
+}
+
+.slider-word {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  font-size: 2.5rem;
+}
+.slider-word.active {
+  opacity: 1;
+}
+
+.hero-slider:hover {
+  background-color: var(--wheat);
+  color: var(--midnight-violet);
+}
+
+p.grabber {
+  font-size: 1.5rem;
+  text-align: center;
+  width: 80%;
+  line-height: 2.5rem;
+}

@@ -1,12 +1,63 @@
 ---
+import "@/styles/contact.css"
 import RootLayout from "@/layout/RootLayout.astro";
 ---
 
 <RootLayout title="Contact Me">
     <section id="contact">
-        <h2>Lets so something!</h2>
-        <p>Email me at <span>thecameronlopez@gmail.com</span></p>
-        <p>Call me at <span>(337)263-0646</span></p>
-        
+        <div class="contact-text-block">
+            <h2>Let's get together!</h2>
+            <p>If you have any questions or want to collab, shoot me a message on any of these platforms</p>
+            <div class="social-links">
+                <a><i class="fa-brands fa-facebook"></i></a>
+                <a><i class="fa-brands fa-instagram"></i></a>
+                <a><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <p>or fill out the form and i'll reach out to you!</p>
+        </div>
+        <form class="contact-form" action="#">
+  
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div>
+                    <label for="phone_number">Phone Number</label>
+                    <input 
+                    type="tel"
+                    name="phone_number" 
+                    id="phone_number"
+                    pattern="\(\d{3}\) \d{3}-\d{4}"
+                    >
+                </div>
+                <div>
+                    <label for="content">Message</label>
+                    <textarea name="content" id="content"></textarea>
+                </div>
+            <button type="submit">Send</button>
+        </form>
     </section>
+    <script>
+        const phoneInput = document.getElementById("phone_number") as HTMLInputElement;
+
+        phoneInput?.addEventListener("input", (e: Event) => {
+            const target = e.target as HTMLInputElement;
+            let x = target.value.replace(/\D/g, "").substring(0, 10);
+            let formatted = x;
+
+            if(x.length > 6) {
+                formatted = `(${x.substring(0, 3)}) ${x.substring(3, 6)}-${x.substring(6, 10)}`
+            } else if (x.length > 3) {
+                formatted = `(${x.substring(0, 3)}) ${x.substring(3, 6)}`;
+            } else if (x.length > 0) {
+                formatted = `(${x}`;
+            }
+
+            target.value = formatted;
+        })
+    </script>
 </RootLayout>

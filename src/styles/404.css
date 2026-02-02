@@ -1,0 +1,22 @@
+.not-found {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.not-found h2 {
+  font-size: 2rem;
+}
+
+.not-found p {
+  font-size: 1.5rem;
+}
+
+p.go-home {
+  font-weight: 700;
+}
+p.go-home a {
+  color: var(--burnt-orange);
+}

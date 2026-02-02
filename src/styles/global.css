@@ -28,7 +28,7 @@ p {
 .half-box-bl {
   border-left: 1px solid var(--dark-slate-gray);
   border-bottom: 1px solid var(--dark-slate-gray);
-  padding: 6px;
+  padding: 6px 8px;
   border-radius: 0 0 0 4px;
   text-align: start;
 }
@@ -36,7 +36,7 @@ p {
 .half-box-tr {
   border-right: 1px solid var(--dark-slate-gray);
   border-top: 1px solid var(--dark-slate-gray);
-  padding: 6px;
+  padding: 6px 8px;
   border-radius: 0 4px 0 0;
   text-align: end;
 }
@@ -68,10 +68,12 @@ header {
   align-items: center;
 
   border-bottom: 1px solid var(--wheat);
+  color: var(--wheat);
 }
 
 header h1 small {
   font-size: 18px;
+  color: var(--burnt-orange);
 }
 
 .subheader {
@@ -96,55 +98,6 @@ header h1 small {
   text-underline-offset: 4px;
 }
 
-.project-page {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-}
-
-p.project-sum {
-  margin-top: 1rem;
-  width: 80%;
-  line-height: 2rem;
-}
-
-aside.projects-subheader {
-  width: fit-content;
-  align-self: flex-end;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-  gap: 1rem;
-
-  font-size: 1rem;
-  color: var(--dark-slate-gray);
-}
-aside.projects-subheader div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  transition: all 0.2s ease;
-}
-
-aside.projects-subheader div:hover {
-  border-right: 1px solid var(--dark-slate-gray);
-  padding-right: 6px;
-}
-aside.projects-subheader div p:first-child {
-  color: var(--wheat);
-  margin-bottom: 6px;
-}
-aside.projects-subheader div a:hover {
-  color: #da773e;
-}
-aside.projects-subheader div a.active {
-  color: var(--burnt-orange);
-  font-weight: bold;
-}
-
 main {
   flex: 1;
 
@@ -160,7 +113,7 @@ footer {
   padding: 2rem 0;
 
   background-color: var(--dark-slate-gray);
-  color: var(--ink-black);
+  color: var(--wheat);
 
   display: flex;
   flex-direction: column;
