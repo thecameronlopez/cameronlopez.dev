@@ -29,14 +29,30 @@ import Navlink from "@/components/Navlink.astro"
     <div class="subheader">
         <Navlink href="/" exact={true}>Home</Navlink>
         <Navlink href="/about">About</Navlink>
-        <Navlink href="/contact">Contact Me</Navlink>
         <Navlink href="/projects">Projects</Navlink>
+        <Navlink href="/contact">Contact Me</Navlink>
     </div>
     <main>
         <slot />
     </main>
     <footer>
-        <p>cameronlopez.dev</p>
+        <p>Cameron Lopez</p>
+        <p>thecameronlopez@gmail.com</p>
+        <p>337-263-0646</p>
+        <div class="footer-social-bar">
+            <a href="https://github.com/thecameronlopez" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.facebook.com/cameron.lopez.191915" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/cameronlopez85/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com/in/thecameronlopez" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+        </div>
     </footer>
 </body>
 </html>

@@ -4,10 +4,25 @@ import RootLayout from "@/layout/RootLayout.astro"
 import Navlink from "@/components/Navlink.astro"
 
 let {title, currentProject} = Astro.props;
+const path = Astro.url.pathname;
 ---
 
 <RootLayout title={title}>
     <div class="project-page">
+        <select name="project-pages" id="project-pages" class="mobile-select">
+            <option value="">--select a project--</option>
+            <optgroup label="Apps">
+                <option value="/projects/blutape" selected={path === "/projects/blutape"}>bluTape</option>
+                <option value="/projects/cerberus" selected={path === "/projects/cerberus"}>Cerberus</option>
+                <option value="/projects/team-portal" selected={path === "/projects/team-portal"}>Team Portal</option>
+                <option value="/projects/epcteams" selected={path === "/projects/epcteams"}>EPC Teams</option>
+            </optgroup>
+            <optgroup label="Static Sites">
+                <option value="/projects/mattsappliances" selected={path === "/projects/mattsappliances"}>Matt's Appliances</option>
+                <option value="/projects/ezrestoration" selected={path === "/projects/ezrestoration"}>EZ Restoration</option>
+                <option value="/projects/airelisellc" selected={path === "/projects/airelisellc"}>Air Elise</option>
+            </optgroup>
+        </select>
         <div>
             <slot />
         </div>
@@ -28,3 +43,13 @@ let {title, currentProject} = Astro.props;
         </aside>
     </div>
 </RootLayout>
+
+<script>
+    const select = document.getElementById('project-pages');
+    select?.addEventListener('change', (e) => {
+        const value = (e.target as HTMLSelectElement).value;
+        if (value) {
+            window.location.href = value;
+        }
+    });
+</script>

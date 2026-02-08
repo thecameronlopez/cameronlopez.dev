@@ -5,6 +5,10 @@
   margin-top: 2rem;
 }
 
+.mobile-select {
+  display: none;
+}
+
 p.project-sum {
   margin-top: 1rem;
   width: 80%;
@@ -13,7 +17,7 @@ p.project-sum {
 
 aside.projects-subheader {
   width: fit-content;
-  align-self: flex-end;
+  align-self: flex-start;
 
   display: flex;
   flex-direction: column;
@@ -46,4 +50,24 @@ aside.projects-subheader div a:hover {
 aside.projects-subheader div a.active {
   color: var(--burnt-orange);
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .project-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  aside.projects-subheader {
+    display: none;
+  }
+  .mobile-select {
+    display: block;
+    font-size: 1.5rem;
+    padding: 4px;
+    border-radius: 8px;
+    width: 80%;
+    text-align: center;
+  }
 }

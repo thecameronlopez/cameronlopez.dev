@@ -81,3 +81,20 @@ textarea {
 .contact-form button[type="submit"]:active {
   box-shadow: unset;
 }
+
+@media (max-width: 768px) {
+  section#contact {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-block: 2rem;
+  }
+
+  .contact-text-block .social-links {
+    width: 100%;
+  }
+
+  .contact-form {
+    margin-bottom: 4rem;
+  }
+}
