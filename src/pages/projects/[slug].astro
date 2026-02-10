@@ -1,0 +1,81 @@
+---
+import { getCollection } from "astro:content";
+import ProjectLayout from "@/layout/ProjectLayout.astro";
+import "@/styles/project-details.css";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const {
+  title,
+  status,
+  summary,
+  url,
+  impact,
+  technicalDetails,
+  techStack,
+  screenshots,
+} = project.data;
+---
+
+<ProjectLayout title={title}>
+    <div class="project-details">
+        <div class="project-details-header">
+            <h2>{title}</h2>
+            {url && (
+                <p class="project-link">
+                    URL:
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                        {url.replace("https://", "")}
+                    </a>
+                </p>
+            )}
+            <p>{summary}</p>
+            {status !== "live" && (
+                <p>
+                    Project details coming soon...
+                </p>
+            )}
+        </div>
+        {screenshots[0] && (
+            <img class="project-image" src={screenshots[0].src} alt={screenshots[0].alt} />
+        )}
+        <div class="project-details-body">
+            {impact.length > 0 && (
+                <div class="project-points">
+                    <h4>Impact</h4>
+                    <ul>
+                        {impact.map((item) => <li>{item}</li>)}
+                    </ul>
+                </div>
+            )}
+            {screenshots[1] && (
+                <img class="project-image" src={screenshots[1].src} alt={screenshots[1].alt} />
+            )}
+            {technicalDetails.length > 0 && (
+                <div class="project-points">
+                    <h4>Technical Details</h4>
+                    <ul>
+                        {technicalDetails.map((item) => <li>{item}</li>)}
+                    </ul>
+                </div>
+            )}
+            {techStack.length > 0 && (
+                <div class="project-points">
+                    <h4>Tech Stack</h4>
+                    <ul>
+                        {techStack.map((item) => <li>{item}</li>)}
+                    </ul>
+                </div>
+            )}
+        </div>
+        <a class="back-to-top" href="#">back to top</a>
+    </div>
+</ProjectLayout>

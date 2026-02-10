@@ -40,6 +40,8 @@ section#hero h2 span:nth-child(2) {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
   font-size: 2.5rem;
+  pointer-events: none;
+  text-align: center;
 }
 .slider-word.active {
   opacity: 1;
@@ -61,6 +63,12 @@ p.grabber {
   font-size: 2em;
   display: flex;
   gap: 2.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-word {
+    transition: none;
+  }
 }
 
 /*

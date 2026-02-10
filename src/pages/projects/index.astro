@@ -1,8 +1,13 @@
 ---
-import ProjectLayout from "./ProjectLayout.astro"
+import ProjectLayout from "@/layout/ProjectLayout.astro"
+import { getEntry } from "astro:content";
+
+const pageConfigEntry = await getEntry("projectPages", "projects");
+const intro = pageConfigEntry?.data.intro ??
+    "I've developed multiple applications and static sites over the years. From simple, single page layouts, to complex full-stack workflow management systems. Take a look!";
 ---
 
-<ProjectLayout title="Projects" currentProject="">
-    <p class="project-sum half-box-bl">I've developed multiple applications and static sites over the years. From simple, single page layouts, to complex full-stack workflow management systems. Take a look!</p>
+<ProjectLayout title="Projects">
+    <p class="project-sum half-box-bl">{intro}</p>
 </ProjectLayout>
 

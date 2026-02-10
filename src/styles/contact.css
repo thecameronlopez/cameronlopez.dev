@@ -51,7 +51,7 @@ section#contact {
 }
 
 .contact-form div input,
-textarea {
+.contact-form div textarea {
   font-size: 18px;
   padding: 4px;
   border-radius: 6px;

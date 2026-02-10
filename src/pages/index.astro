@@ -1,13 +1,17 @@
 ---
 import "@/styles/home.css"
 import RootLayout from "@/layout/RootLayout.astro"
-import HeroSlider from "@/components/HeroSlider"
 ---
 
 <RootLayout title="Cameron Lopez">
 	<section id="hero">
         <h2><span>Digital Tools.</span><span>Real Impact.</span></h2>
-        <HeroSlider client:load />
+        <div class="hero-slider" id="hero-slider" aria-live="polite">
+            <p class="slider-word">Code.</p>
+            <p class="slider-word">Create.</p>
+            <p class="slider-word">Conquer.</p>
+            <p class="slider-word">Repeat.</p>
+        </div>
         <p class="grabber">Helping churches, creators, and teams build custom tools that actually work.</p>
         <div class="home-social-bar">
             <a href="https://github.com/thecameronlopez" target="_blank" rel="noopener noreferrer">
@@ -24,4 +28,18 @@ import HeroSlider from "@/components/HeroSlider"
             </a>
         </div>
     </section>
+    <script>
+        const slider = document.getElementById("hero-slider");
+        const words = slider ? Array.from(slider.querySelectorAll(".slider-word")) : [];
+
+        if (words.length > 1) {
+            let current = 0;
+            words[current].classList.add("active");
+            setInterval(() => {
+                words[current].classList.remove("active");
+                current = (current + 1) % words.length;
+                words[current].classList.add("active");
+            }, 1600)
+        }
+    </script>
 </RootLayout>

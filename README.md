@@ -1,43 +1,48 @@
-# Astro Starter Kit: Minimal
+# cameronlopez.dev
+
+Portfolio site built with Astro.
+
+## Commands
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
+npm run build
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Projects System (Content Collections)
 
-## 🚀 Project Structure
+Project pages are content-driven and generated dynamically from:
 
-Inside of your Astro project, you'll see the following folders and files:
+- `src/content/config.ts`
+- `src/content/projects/*.md`
+- `src/pages/projects/[slug].astro`
+- `src/layout/ProjectLayout.astro`
+- `src/content/projectPages/projects.md` (projects page intro + nav groups)
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Add a New Project Checklist
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. Create a new content file in `src/content/projects/` (example: `my-project.md`).
+2. Add required frontmatter fields:
+   - `title`
+   - `category` (`app` or `site`)
+   - `summary`
+3. Add optional fields as needed:
+   - `status` (`live`, `wip`, `coming-soon`)
+   - `url`
+   - `impact` (array)
+   - `technicalDetails` (array)
+   - `techStack` (array)
+   - `screenshots` (array of `{ src, alt }`)
+   - `sortOrder` (number)
+4. If using screenshots, place files under `public/screenshots/...` and reference with absolute paths like `/screenshots/my-project/shot-1.png`.
+5. Run `npm run build` to validate schema and route generation.
+6. Visit `/projects` and `/projects/<slug>` to verify nav ordering and page content.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Edit Projects Page Intro / Nav Labels
 
-Any static assets, like images, can be placed in the `public/` directory.
+Update `src/content/projectPages/projects.md`:
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `intro` controls the summary paragraph on `/projects`.
+- `navGroups` controls project group labels and their order in sidebar/select.

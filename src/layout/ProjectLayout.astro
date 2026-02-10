@@ -1,0 +1,76 @@
+---
+import "@/styles/projects.css"
+import RootLayout from "@/layout/RootLayout.astro"
+import Navlink from "@/components/Navlink.astro"
+import { getCollection, getEntry } from "astro:content";
+
+const pageConfigEntry = await getEntry("projectPages", "projects");
+const pageConfig = pageConfigEntry?.data ?? {
+  title: "Projects",
+  navGroups: [
+    { id: "app", label: "Apps", sortOrder: 1 },
+    { id: "site", label: "Static Sites", sortOrder: 2 },
+  ],
+};
+
+const { title = pageConfig.title } = Astro.props;
+const path = Astro.url.pathname;
+const projects = (await getCollection("projects"))
+  .slice()
+  .sort(
+    (a, b) =>
+      a.data.sortOrder - b.data.sortOrder ||
+      a.data.title.localeCompare(b.data.title),
+  );
+
+const navGroups = pageConfig.navGroups
+  .slice()
+  .sort((a, b) => a.sortOrder - b.sortOrder)
+  .map((group) => ({
+    ...group,
+    projects: projects.filter((project) => project.data.category === group.id),
+  }))
+  .filter((group) => group.projects.length > 0);
+
+const hrefFor = (slug: string) => `/projects/${slug}`;
+---
+
+<RootLayout title={title}>
+    <div class="project-page">
+        <select name="project-pages" id="project-pages" class="mobile-select">
+            <option value="">--select a project--</option>
+            {navGroups.map((group) => (
+                <optgroup label={group.label}>
+                    {group.projects.map((project) => (
+                        <option value={hrefFor(project.slug)} selected={path === hrefFor(project.slug)}>
+                            {project.data.title}
+                        </option>
+                    ))}
+                </optgroup>
+            ))}
+        </select>
+        <div>
+            <slot />
+        </div>
+        <aside class="projects-subheader">
+            {navGroups.map((group) => (
+                <div>
+                    <p>{group.label}</p>
+                    {group.projects.map((project) => (
+                        <Navlink href={hrefFor(project.slug)}>{project.data.title}</Navlink>
+                    ))}
+                </div>
+            ))}
+        </aside>
+    </div>
+</RootLayout>
+
+<script>
+    const select = document.getElementById('project-pages');
+    select?.addEventListener('change', (e) => {
+        const value = (e.target as HTMLSelectElement).value;
+        if (value) {
+            window.location.href = value;
+        }
+    });
+</script>
