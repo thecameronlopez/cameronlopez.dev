@@ -69,3 +69,37 @@ Add per-page canonical/OG/Twitter meta for better sharing and recruiter visibili
 4. Correct copy typos in project pages.
 5. Compress large images and swap hero slider to lighter client behavior.
 6. Add nginx static caching + compression config.
+
+<!-- ====================================================================== -->
+<!-- ======================= Changes made on 2/9/26 ======================= -->
+<!-- ====================================================================== -->
+
+## Changes made on 2/9/26
+
+- Moved `ProjectLayout.astro` from `src/pages/projects/` to `src/layout/` and updated all project imports.
+- Removed unintended generated route `/projects/ProjectLayout/`.
+- Fixed metadata typo in `RootLayout` (`description`) and removed invalid Font Awesome SRI placeholder that could block icon CSS.
+- Fixed contact page social links by adding real `href` values and external link attributes.
+- Fixed CSS selector leak in `src/styles/contact.css` by scoping `textarea` styles to `.contact-form`.
+- Migrated Projects section from static hardcoded pages to Astro Content Collections:
+  - Added project collection schema in `src/content/config.ts`.
+  - Added project entries in `src/content/projects/*.md`.
+  - Implemented dynamic route `src/pages/projects/[slug].astro`.
+  - Updated `src/layout/ProjectLayout.astro` to render sidebar and mobile select from collection data.
+  - Removed old static project detail pages in `src/pages/projects/*.astro` (except `index` and `[slug]`).
+- Added page-level projects content collection (`projectPages`) for data-driven Projects intro text and nav group labels/order.
+- Updated `src/pages/projects/index.astro` to read intro copy from content instead of hardcoding.
+- Removed temporary learning/test route `src/pages/project-test.astro`.
+- Replaced starter `README.md` with project-specific docs and a repeatable “Add a New Project” checklist.
+- Replaced React-hydrated hero slider behavior on homepage with lightweight vanilla JS word rotation in `src/pages/index.astro`.
+- Optimized images:
+  - Generated WebP versions for major screenshot assets and updated content references.
+  - Removed old screenshot PNG originals after migration.
+  - Achieved ~88.94% size reduction on the targeted image set (about 4.23 MB saved).
+- Updated `nginx.conf` with performance-focused static hosting rules:
+  - gzip compression for text assets
+  - immutable long-cache policy for `/_astro/` assets
+  - cache headers for media/fonts/icons
+  - `no-cache` for HTML
+  - retained SPA-style fallback routing via `try_files`
+- Verified changes repeatedly with `npm run build` (passing).
